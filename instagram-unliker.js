@@ -136,7 +136,7 @@
         let select = null;
 
 
-        for (let attempt = 1; attempt <= 40; attempt++) {
+        for (let attempt = 1; attempt <= 300; attempt++) {
 
             select = findTextButton([
                 "Select",
@@ -149,7 +149,7 @@
 
 
             console.log(
-                `⏳ Select not found (attempt ${attempt}/8)`
+                `⏳ Select not found (attempt ${attempt}/300)`
             );
 
             await sleep(500);
