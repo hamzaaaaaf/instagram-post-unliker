@@ -39,6 +39,10 @@ In Chrome:
 ```text
 Ctrl + Shift + J
 ```
+or
+```text
+Ctrl + Shift + I
+```
 
 You can also open:
 
