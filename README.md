@@ -1,147 +1,150 @@
 # Instagram Likes Bulk Unliker
 
-A browser-console JavaScript utility for bulk removing liked posts from Instagram's **Your Activity → Interactions → Likes** page.
+A simple browser-console tool that helps you **bulk unlike posts you've previously liked on Instagram**.
 
-The script automatically enters Select mode, selects currently loaded liked posts, opens Instagram's Unlike confirmation dialog, confirms the action, waits for the interface to update, and continues with the next batch.
+Instead of manually selecting and unliking posts one by one, the tool automates the process for you.
 
-> **Note:** This script depends on Instagram's current web interface and DOM structure. Instagram can change its UI at any time, which may cause the script to stop working.
+> ⚠️ **Important:** This is an unofficial community-made tool. It is not affiliated with Instagram or Meta. Instagram can change its website at any time, which may cause the tool to stop working.
 
-## Features
+## ✨ Features
 
-* Automatically enters Select mode
-* Detects Instagram's currently loaded selectable posts
-* Selects loaded posts automatically
-* Processes posts in batches
-* Automatically opens the Unlike confirmation
-* Automatically confirms the Unlike action
-* Waits between batches to allow Instagram's interface to update
-* Continues without manually reloading the page
+* Automatically enters Instagram's **Select** mode
+* Automatically detects available liked posts
+* Selects posts quickly
+* Unlikes multiple posts automatically
+* Automatically handles Instagram's confirmation dialog
+* Waits between batches so Instagram has time to update
+* Continues processing without requiring you to manually reload the page
+* Works directly in your browser — no installation required
 
-## Requirements
+## 🖥️ Requirements
 
-* A desktop browser
-* A logged-in Instagram account
-* Access to Instagram's **Your Activity → Interactions → Likes** page
-* Browser Developer Tools / JavaScript Console
+You will need:
 
-## Usage
+* A desktop computer
+* Google Chrome or another Chromium-based browser
+* An Instagram account
+* Access to your Instagram **Likes** activity
+* A few minutes to set up the script
+
+## 🚀 How to Use
 
 ### 1. Open Instagram
 
-Go to Instagram and navigate to:
+Log into Instagram and go to:
 
 **Your Activity → Interactions → Likes**
 
-### 2. Open the Developer Console
+You should see the list of posts you've liked.
 
-In Chrome:
+### 2. Open the Browser Console
 
-```text
-Ctrl + Shift + J
-```
-or
-```text
-Ctrl + Shift + I
-```
+In Google Chrome, press:
 
-You can also open:
+**Ctrl + Shift + J**
 
-**Developer Tools → Console**
+Alternatively:
 
-### 3. Paste the script
+**Ctrl + Shift + I → Console**
 
-Open `instagram-unliker.js`, copy the entire script, and paste it into the browser console.
+### 3. Run the Script
 
-Run it.
+Open the JavaScript file included in this repository.
 
-The script will automatically attempt to enter Select mode and begin processing the currently loaded liked posts.
+Copy the entire script and paste it into the browser console.
 
-### 4. Let it run
+Press **Enter** to start it.
 
-The console will display progress similar to:
+The tool will automatically:
 
-```text
-🚀 Instagram Unlike Bot started
+1. Enter Select mode
+2. Find the currently loaded posts
+3. Select them
+4. Click Unlike
+5. Confirm the action
+6. Wait for Instagram to update
+7. Continue with the next batch
 
-========== BATCH 1 ==========
+### 4. Let It Run
 
-🔎 Checking Select mode...
-🔥 Entering Select mode...
-✅ Select mode active — 27 checkboxes
+You can monitor its progress through the browser console.
 
-☑️ Selecting 27 posts quickly...
-✅ Selected 27 posts
+You'll see messages showing things like:
 
-🔥 Opening Unlike confirmation...
-✅ Confirmation found
-🔥 Unlike confirmed
+* Which batch is currently being processed
+* How many posts were selected
+* When an Unlike action is being performed
+* When Instagram is being given time to update
+* When the next batch begins
 
-⏳ Waiting 10s...
-✅ Batch 1 completed
+You **do not need to manually reload the page** between batches.
 
-🔄 Preparing next batch...
-```
+## ⚙️ How It Works
 
-## Configuration
+The tool processes the posts that Instagram has currently loaded on the page.
 
-The script contains a configuration section near the beginning:
+After completing a batch, it waits for Instagram to update and load the next available posts before continuing.
 
-```javascript
-const BATCH_SIZE = Infinity;
-const CHECKBOX_DELAY = 60;
+The current version is configured to:
 
-const SELECT_WAIT = 600;
-const AFTER_SELECTION = 1500;
-const AFTER_CONFIRM = 10000;
-const BETWEEN_BATCHES = 5000;
-```
+* Select as many currently available posts as possible
+* Select posts with a short delay between each selection
+* Wait a few seconds after selecting posts
+* Give Instagram up to several seconds to respond when necessary
+* Wait **8 seconds** after an Unlike action
+* Wait an additional **5 seconds** before starting the next batch
 
-### BATCH_SIZE
+These delays are intentional and help prevent the script from moving faster than Instagram's interface can handle.
 
-`Infinity` means the script attempts to process all currently loaded selectable posts rather than using a fixed number such as 20.
+## ⚠️ Important Notes
 
-### CHECKBOX_DELAY
+### Keep Instagram Open
 
-Controls the delay between selecting individual posts.
+For the most reliable results, keep the Instagram tab open and visible while the script is running.
 
-### AFTER_SELECTION
+Switching to another application may work, but browser performance can vary depending on your computer, Chrome settings, and whether the page becomes inactive.
 
-Controls how long the script waits after selecting posts before looking for the Unlike button.
+### Instagram May Load Posts Slowly
 
-### AFTER_CONFIRM
+Instagram does not necessarily load every liked post at once.
 
-Controls how long the script waits after confirming an Unlike action before continuing.
+If additional posts take time to appear, the script waits for them before continuing.
 
-### BETWEEN_BATCHES
+### Don't Interact With the Page While It's Running
 
-Controls the pause before beginning the next batch.
+Avoid manually clicking buttons, selecting posts, scrolling, or navigating away from the Likes page while the tool is running.
 
-## Important
+Doing so can interfere with the automation.
 
-This script interacts with Instagram through the browser's existing interface. It does not use Instagram's API.
+### The Script May Stop
 
-Instagram's interface and internal DOM structure can change without notice. Selectors such as:
+If Instagram changes its interface or something unexpected happens, the script may stop rather than continue blindly.
 
-```javascript
-[aria-label="Toggle checkbox"]
-```
+If that happens, check the console for the message explaining what happened.
 
-and:
+## 🔒 Privacy
 
-```javascript
-[role="button"][aria-label="Unlike"]
-```
+The script runs directly inside your browser.
 
-may stop working if Instagram changes its interface.
+It does **not** require you to provide:
 
-Use the script responsibly and at your own discretion.
+* Your Instagram password
+* Your Instagram session cookie
+* Your account credentials
+* An API key
 
-## Disclaimer
+Never give your Instagram password or session information to anyone claiming they need it for this tool.
 
-This is an unofficial, community-created browser-console utility and is not affiliated with, endorsed by, or sponsored by Instagram or Meta.
+## ⚠️ Disclaimer
 
-The author is not responsible for account restrictions, rate limits, lost data, or other consequences resulting from use of the script.
+This project is an unofficial community-created browser utility and is **not affiliated with, endorsed by, or sponsored by Instagram or Meta**.
 
-## License
+Use it at your own discretion.
+
+Instagram may impose limits or restrictions on automated activity, and the behavior of this tool may change if Instagram changes its website.
+
+The author is not responsible for account restrictions, rate limits, unexpected behavior, or any other consequences resulting from use of the tool.
+
+## 📄 License
 
 No license has currently been specified for this project.
